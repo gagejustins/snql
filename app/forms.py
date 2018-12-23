@@ -3,12 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Selec
 from wtforms.validators import DataRequired
 
 class SneakerEventForm(FlaskForm):
-    event_type = SelectField('EventName', validators=[DataRequired()])
-    sneaker_id = SelectField('SneakerId', validators=[DataRequired()])
+    event_type = SelectField('Event Name', validators=[DataRequired()], choices=[('Add', 'add'), ('Remove', 'remove'), ('Clean', 'clean'), ('Wear', 'wear')])
+    owner_id = SelectField('OwnerId', validators=[DataRequired()], choices= [('0',0)])
+    sneaker_id = SelectField('SneakerId', validators=[DataRequired()], choices = [('1',1)])
     submit = SubmitField('Log Event')    
-
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
