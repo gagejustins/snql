@@ -10,7 +10,8 @@
         <div>
             Snql:
             <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('log_sneaker_event') }}">Sneakers</a>
+            <a href="{{ url_for('log_sneaker_event') }}">Log Sneaker Event</a>
+            <a href="{{ url_for('add_sneaker') }}">Add Sneakers</a>
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
