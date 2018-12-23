@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Log Sneaker Event</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.event_type.label }}<br>
+            {{ form.event_type }}
+            {% for error in form.event_type.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.owner_id.label }}<br>
+            {{ form.owner_id }}
+            {% for error in form.owner_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.sneaker_id.label }}<br>
+            {{ form.sneaker_id }}
+            {% for error in form.sneaker_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+     </form>
+{% endblock %}
