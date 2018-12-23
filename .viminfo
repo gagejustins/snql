@@ -49,18 +49,19 @@
 	snql
 
 # File marks:
-'0  82  51  ~/venv/bin/activate
-'1  1  0  ~/app/models.py
-'2  1  0  ~/app/forms.py
-'3  1  0  ~/app/routes.py
-'4  18  4  ~/app/routes.py
-'5  11  0  ~/app/__init__.py
-'6  1  0  ~/config.py
-'7  1  0  ~/venv/bin/acticate
-'8  4  32  ~/app/__init__.py
-'9  21  0  ~/app/models.py
+'0  1  4  ~/.gitignore
+'1  82  51  ~/venv/bin/activate
+'2  1  0  ~/app/models.py
+'3  1  0  ~/app/forms.py
+'4  1  0  ~/app/routes.py
+'5  18  4  ~/app/routes.py
+'6  11  0  ~/app/__init__.py
+'7  1  0  ~/config.py
+'8  1  0  ~/venv/bin/acticate
+'9  4  32  ~/app/__init__.py
 
 # Jumplist (newest first):
+-'  1  4  ~/.gitignore
 -'  82  51  ~/venv/bin/activate
 -'  2  0  ~/venv/bin/activate
 -'  1  0  ~/venv/bin/activate
@@ -160,6 +161,12 @@
 -'  1  750  ~/authorized_keys
 
 # History of marks within files (newest to oldest):
+
+> ~/.gitignore
+	"	1	4
+	^	1	5
+	.	1	4
+	+	1	4
 
 > ~/venv/bin/activate
 	"	82	51
