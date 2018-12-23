@@ -1,1 +1,4 @@
 /.ssh
+.python_history
+.viminfo
+__pycache__
