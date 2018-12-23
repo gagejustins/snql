@@ -21,7 +21,10 @@ def add_sneaker():
     form = SneakerCatalogForm()
     if form.validate_on_submit():
         conn = data_hooks.db_connect()
-        results = data_hooks.sneaker_insert(conn, form.sneaker_name.data, form.color.data, form.purchase_price.data, form.manufacturer_id.data)
-        flash(results)
+        inserted_id = data_hooks.sneaker_insert(conn, form.sneaker_name.data, form.color.data, form.purchase_price.data, form.manufacturer_id.data)
+        if inserted_id:
+            event = data_hooks.sneaker_event_insert(conn, inserted_id, 'add', config=None) 
+        flash('Inserted ID: ' + str(inserted_id))
+        conn.close()
         return redirect(url_for('index'))
     return render_template('sneaker_catalog.html', title='Event logged', form=form)
