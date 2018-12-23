@@ -2,3 +2,10 @@
 .python_history
 .viminfo
 __pycache__
+.sudo_as_admin_successful
+.psql_history
+.bash_history
+.bash_logout
+.bashrc
+.cloud-locale-test.skip
+.cache
