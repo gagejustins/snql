@@ -7,3 +7,5 @@ In the interest of getting better at general software engineering practices and 
 4) Auto-updating visualizations of my sneaker habits on justinsgage.com
 
 If this works out at all, maybe I'll turn it into an app.
+
+![](https://github.com/gagejustins/snql/blob/master/model.jpeg)
