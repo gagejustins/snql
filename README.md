@@ -1,4 +1,4 @@
-# snql
+# SNQL
 In the interest of getting better at general software engineering practices and building data pipelines, I'm building a data pipeline for my sneaker collection. Here's the plan:
 
 1) Web interface for logging events: adding, cleaning, selling, and wearing sneakers
