@@ -1,7 +1,7 @@
 /.ssh
 .python_history
 .viminfo
-*/__pycache__/*
+__pycache__/
 .sudo_as_admin_successful
 .psql_history
 .bash_history
