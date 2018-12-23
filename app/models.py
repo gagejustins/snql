@@ -1,6 +1,12 @@
 from app import db
 from datetime import datetime
 
+class Event(db.Model):
+    event_id = db.Column(db.Integer, primary_key=True)
+    owner_id = db.Column(db.Integer)
+    event_type = db.Column(db.String(120), index=True)
+    event_time = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
