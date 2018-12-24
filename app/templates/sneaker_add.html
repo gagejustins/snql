@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Add Sneakers</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.sneaker_name.label }}<br>
+            {{ form.sneaker_name }}
+            {% for error in form.sneaker_name.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.color.label }}<br>
+            {{ form.color }}
+            {% for error in form.color.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.purchase_price.label }}<br>
+            {{ form.purchase_price }}
+            {% for error in form.purchase_price.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.manufacturer_id.label }}<br>
+            {{ form.manufacturer_id }}
+            {% for error in form.manufacturer_id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+     </form>
+{% endblock %}
