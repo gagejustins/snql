@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app, db
-from app.forms import SneakerEventForm, SneakerCatalogForm
+from app import app
+from app.forms import SneakerEventForm, SneakerAddForm, SneakerRemoveForm
 from app.data_scripts import data_hooks 
 
 @app.route('/')
@@ -16,9 +16,9 @@ def log_sneaker_event():
         return redirect(url_for('index'))
     return render_template('sneaker_event.html', title='Event logged', form=form)
 
-@app.route('/sneakers-catalog', methods=['GET', 'POST'])
-def add_sneaker():
-    form = SneakerCatalogForm()
+@app.route('/add-sneakers', methods=['GET', 'POST'])
+def add_sneakers():
+    form = SneakerAddForm()
     if form.validate_on_submit():
         conn = data_hooks.db_connect()
         inserted_id = data_hooks.sneaker_insert(conn, form.sneaker_name.data, form.color.data, form.purchase_price.data, form.manufacturer_id.data)
@@ -28,3 +28,14 @@ def add_sneaker():
         conn.close()
         return redirect(url_for('index'))
     return render_template('sneaker_catalog.html', title='Event logged', form=form)
+
+@app.route('/remove-sneakers', methods=['GET', 'POST'])
+def remove_sneakers():
+    form = SneakerRemoveForm()
+    if form.validate_on_submit():
+        conn = data_hooks.db_connect()
+        event = data_hooks.sneaker_event_insert(conn, form.sneaker_to_remove.data, form.removal_type.data, config=None)
+        flash(event)
+        conn.close()
+        return redirect(url_for('index'))
+    return render_template('sneaker_remove.html', title='Event logged', form=form)
