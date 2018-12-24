@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Remove Sneakers</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.removal_type.label }}<br>
+            {{ form.removal_type}}
+            {% for error in form.removal_type.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.sneaker_to_remove.label }}<br>
+            {{ form.sneaker_to_remove }}
+            {% for error in form.sneaker_to_remove.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+     </form>
+{% endblock %}
