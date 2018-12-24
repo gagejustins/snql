@@ -17,7 +17,7 @@ def db_connect(DBURI=os.environ['DATABASE_URL']):
         return None
 
 def list_available_sneakers(conn):
-    sql = "select s.id, concat_ws(', ',concat_ws(' ', case when m.collaborator_name is not null then concat_ws(' x ', m.manufacturer_name, m.collaborator_name) else m.manufacturer_name end, s.sneaker_name), s.color) as sneaker from sneakers s join manufacturers m on s.manufacturer_id = m.id and s.sold_at is null and s.trashed_at is null and s.given_at is null"
+    sql = "select s.id, concat_ws(', ',concat_ws(' ', case when m.collaborator_name is not null then concat_ws(' x ', m.manufacturer_name, m.collaborator_name) else m.manufacturer_name end, s.sneaker_name), s.color) as sneaker from sneakers s join manufacturers m on s.manufacturer_id = m.id and s.sold_at is null and s.trashed_at is null and s.given_at is null order by 2"
 
     cur = conn.cursor()
     cur.execute(sql)
