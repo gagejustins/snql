@@ -12,13 +12,6 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.owner_id.label }}<br>
-            {{ form.owner_id }}
-            {% for error in form.owner_id.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
             {{ form.sneaker_id.label }}<br>
             {{ form.sneaker_id }}
             {% for error in form.sneaker_id.errors %}
