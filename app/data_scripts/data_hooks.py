@@ -17,16 +17,12 @@ def db_connect(DBURI=os.environ['DATABASE_URL']):
         return None
 
 def list_available_sneakers(conn):
-    sql = "SELECT sneaker_name, color FROM sneakers WHERE sold_at IS NULL"
+    sql = "SELECT id, CONCAT_WS(', ', sneaker_name, color) FROM sneakers WHERE sold_at IS NULL"
     cur = conn.cursor()
     cur.execute(sql)
     results = cur.fetchall()
 
-    sneakers = []
-    for result in results:
-        sneaker = ', '.join(result)
-        sneakers.append(sneaker)
-
+    sneakers = [result for result in results]
     return sneakers
 
 def sneaker_event_insert(conn, sneaker_id, event_type, config):

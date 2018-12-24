@@ -1,2 +1,2 @@
 [CATEGORICAL]
-event_types: add,remove,clean,wear
+event_types: add,clean,wear,sell,trash,give
