@@ -1,9 +1,12 @@
 /.ssh
 .python_history
 .viminfo
+.vim/*
+.vim
 __pycache__/
 .sudo_as_admin_successful
 .psql_history
+.psqlrc
 .bash_history
 .bash_logout
 .bashrc
