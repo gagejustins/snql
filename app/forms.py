@@ -18,7 +18,7 @@ class SneakerAddForm(FlaskForm):
     color = StringField(validators=[DataRequired()])
     purchase_price = FloatField(validators=[DataRequired()]) 
     manufacturer_id = SelectField('Manufacturer Name', coerce=int, validators=[DataRequired()]) 
-    submit = SubmitField('Add Sneaker') 
+    submit = SubmitField('Add Sneakers') 
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -27,12 +27,12 @@ class SneakerAddForm(FlaskForm):
 class ManufacturerAddForm(FlaskForm):
     manufacturer_name = StringField(validators=[DataRequired()])
     collaborator_name = StringField(default=None)
-    submit = SubmitField('Add Manufacturer')
+    submit = SubmitField('Add Brand')
 
 class SneakerRemoveForm(FlaskForm):
     removal_type = SelectField('Removal Type', validators=[DataRequired()], choices=[('sell', 'Sell'), ('trash', 'Trash'), ('give', 'Give')])
     sneaker_to_remove = SelectField('Sneaker Name', coerce=int, validators=[DataRequired()]) 
-    submit = SubmitField('Remove Sneaker')
+    submit = SubmitField('Remove Sneakers')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
