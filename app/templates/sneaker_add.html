@@ -1,37 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Add Sneakers</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.sneaker_name.label }}<br>
-            {{ form.sneaker_name }}
-            {% for error in form.sneaker_name.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.color.label }}<br>
-            {{ form.color }}
-            {% for error in form.color.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.purchase_price.label }}<br>
-            {{ form.purchase_price }}
-            {% for error in form.purchase_price.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.manufacturer_id.label }}<br>
-            {{ form.manufacturer_id }}
-            {% for error in form.manufacturer_id.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-     </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="sneaker-form-header">Add Sneakers</h1>
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <label for="name">{{ form.sneaker_name.label }}</label>
+                    {{ form.sneaker_name(class="form-control") }}
+                    {% for error in form.sneaker_name.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="color">{{ form.color.label }}</label>
+                    {{ form.color(class="form-control") }}
+                    {% for error in form.color.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="price">{{ form.purchase_price.label }}</label>
+                        {{ form.purchase_price(class="form-control") }}
+                        {% for error in form.purchase_price.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="select_manufacturer">{{ form.manufacturer_id.label }}</label>
+                    {{ form.manufacturer_id(class="form-control") }}
+                    {% for error in form.manufacturer_id.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+                <p>{{ form.submit(class="sneaker-form-submit") }}</p>
+             </form>
+         </div>
+    </div>
+</div> 
 {% endblock %}
