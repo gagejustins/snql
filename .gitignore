@@ -3,6 +3,7 @@
 .viminfo
 .vim/*
 .vim
+.wget-hsts
 __pycache__/
 .sudo_as_admin_successful
 venv/
