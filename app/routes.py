@@ -1,7 +1,8 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, Response 
 from app import app
 from app.forms import SneakerEventForm, SneakerAddForm, SneakerRemoveForm, ManufacturerAddForm
-from app.data_scripts import data_hooks 
+from app.data_scripts import data_hooks, data_api 
+import pandas as pd
 
 @app.route('/')
 @app.route('/index')
@@ -55,3 +56,21 @@ def remove_sneakers():
         conn.close()
         return redirect(url_for('index'))
     return render_template('sneaker_remove.html', title='Event logged', form=form)
+
+@app.route('/pairs_owned_over_time', methods=['GET'])
+def pairs_owned_over_time():
+    conn = data_hooks.db_connect()
+    pairs_owned_over_time = data_api.generate_pairs_owned_over_time_df(conn)
+    response = Response(pairs_owned_over_time.to_csv(index=False))
+    response.headers['Content-Type'] = 'text/csv'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
+@app.route('/pairs_per_brand', methods=['GET'])
+def pairs_per_brand():
+    conn = data_hooks.db_connect()
+    pairs_per_brand = data_api.generate_pairs_per_brand_df(conn)
+    response = Response(pairs_per_brand.to_csv(index=False))
+    response.headers['Content-Type'] = 'text/csv'
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
