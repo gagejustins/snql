@@ -9,6 +9,10 @@ h1 {
   padding-bottom: 20px;
 }
 
+a.link {
+  color: red;
+}
+
 .navbar {
   background-color: white;
 }
