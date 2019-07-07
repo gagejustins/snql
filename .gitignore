@@ -15,3 +15,5 @@ venv/
 .bashrc
 .cloud-locale-test.skip
 .cache
+.vscode-server
+nohup.out
