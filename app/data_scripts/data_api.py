@@ -5,10 +5,10 @@ def generate_pairs_owned_over_time_df(conn):
 	c.month,
 	count(*) as pairs_owned
 from calendar_monthly c
-join dim_sneakers_current s on s.created_at <= c.month
-	and (sold_at <= c.month or sold_at is null) 
-	and (trashed_at <= c.month or trashed_at is null)
-	and (given_at <= c.month or given_at is null)
+join dim_sneakers s on s.created_at <= c.month
+	and (sold_at >= c.month or sold_at is null) 
+	and (trashed_at >= c.month or trashed_at is null)
+	and (given_at >= c.month or given_at is null)
 	and c.month <= date_trunc('month', now())
 group by 1
 order by 1"""
@@ -27,7 +27,7 @@ def generate_pairs_per_brand_df(conn):
     sql = """select
 	manufacturer_name,
 	count(*)
-from dim_sneakers_current
+from dim_sneakers
 where is_owned = true
 group by 1 
 order by 2 desc"""
