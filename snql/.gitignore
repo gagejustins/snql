@@ -1,4 +1,4 @@
-/.ssh
+*.ssh*
 .profile
 .python_history
 .viminfo
