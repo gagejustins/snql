@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request, Response 
 from app import app
-from app.forms import SneakerEventForm, SneakerAddForm, SneakerRemoveForm, ManufacturerAddForm
+from datetime import datetime
+from app.forms import SneakerEventForm, SneakerAddForm, SneakerTrashOrGiveForm, SneakerSaleForm, ManufacturerAddForm
 from app.data_scripts import data_hooks, data_api 
 import pandas as pd
 from twilio.twiml.messaging_response import MessagingResponse
@@ -46,13 +47,40 @@ def add_manufacturer():
         return redirect(url_for('index'))
     return render_template('manufacturer_add.html', title='Event logged', form=form) 
 
-@app.route('/remove-sneakers', methods=['GET', 'POST'])
-def remove_sneakers():
-    form = SneakerRemoveForm()
+@app.route('/sell-sneakers', methods=['GET', 'POST'])
+def sell_sneakers():
+    form = SneakerSaleForm()
     if form.validate_on_submit():
         conn = data_hooks.db_connect()
-        event = data_hooks.sneaker_event_insert(conn, form.sneaker_to_remove.data, form.removal_type.data, config=None)
-        remove_update = data_hooks.sneaker_remove(conn, form.sneaker_to_remove.data, form.removal_type.data)
+        event = data_hooks.sneaker_event_insert(conn=conn, 
+                                                sneaker_id=form.sneaker_to_sell.data, 
+                                                event_type='sell', 
+                                                event_time=form.sale_date.data or datetime.utcnow(),
+                                                config=None)
+        remove_update = data_hooks.sneaker_remove(conn=conn, 
+                                                  sneaker_id=form.sneaker_to_sell.data, 
+                                                  remove_type='sell',
+                                                  sale_price=form.sale_price.data, 
+                                                  event_time=form.sale_date.data or datetime.utcnow())
+        flash(event, remove_update)
+        conn.close()
+        return redirect(url_for('index'))
+    return render_template('sneaker_sell.html', title='Event logged', form=form)
+
+@app.route('/remove-sneakers', methods=['GET', 'POST'])
+def remove_sneakers():
+    form = SneakerTrashOrGiveForm()
+    if form.validate_on_submit():
+        conn = data_hooks.db_connect()
+        event = data_hooks.sneaker_event_insert(conn=conn, 
+                                                sneaker_id=form.sneaker_to_remove.data, 
+                                                event_type=form.remove_type.data, 
+                                                event_time=form.remove_date.data or datetime.utcnow(),
+                                                config=None)
+        remove_update = data_hooks.sneaker_remove(conn=conn, 
+                                                  sneaker_id=form.sneaker_to_remove.data, 
+                                                  remove_type=form.remove_type.data,
+                                                  event_time=form.remove_date.data or datetime.utcnow())
         flash(event, remove_update)
         conn.close()
         return redirect(url_for('index'))

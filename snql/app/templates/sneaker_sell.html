@@ -4,28 +4,28 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="sneaker-form-header">Remove Sneakers</h1>
+            <h1 class="sneaker-form-header">Sell Sneakers</h1>
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <div class="form-group">
-                    <label for="type">{{ form.remove_type.label }}</label>
-                    {{ form.remove_type(class="form-control") }}
-                    {% for error in form.remove_type.errors %}
+                    <label for="color">{{ form.sneaker_to_sell.label }}</label>
+                    {{ form.sneaker_to_sell(class="form-control") }}
+                    {% for error in form.sneaker_to_sell.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="color">{{ form.sneaker_to_remove.label }}</label>
-                    {{ form.sneaker_to_remove(class="form-control") }}
-                    {% for error in form.sneaker_to_remove.errors %}
+                    <label for="color">{{ form.sale_price.label }}</label>
+                    {{ form.sale_price(class="form-control") }}
+                    {% for error in form.sale_price.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="color">{{ form.remove_date.label }}</label>
+                    <label for="color">{{ form.sale_date.label }}</label>
                     <p style="color: gray; font-size: .8em;">YYYY-MM-DD</p>
-                    {{ form.remove_date(class="form-control") }}
-                    {% for error in form.remove_date.errors %}
+                    {{ form.sale_date(class="form-control") }}
+                    {% for error in form.sale_date.errors %}
                         <span style="color: red;">[{{ error }}]</span>
                     {% endfor %}
                 </div>

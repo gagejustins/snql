@@ -58,7 +58,7 @@ def available_sneakers_search(conn, search_term):
     sneakers = [result for result in results]
     return sneakers
 
-def sneaker_event_insert(conn, sneaker_id, event_type, config):
+def sneaker_event_insert(conn, sneaker_id, event_type, config, event_time=datetime.utcnow()):
 
     if config != None:
         #Validate against event_type configs
@@ -68,7 +68,7 @@ def sneaker_event_insert(conn, sneaker_id, event_type, config):
             return None
 
     sql = "INSERT INTO sneaker_events VALUES (DEFAULT, %s, %s, %s)" 
-    params = (event_type, sneaker_id, datetime.utcnow())
+    params = (event_type, sneaker_id, event_time)
 
     cur = conn.cursor()
     cur.execute(sql, params)
@@ -102,22 +102,26 @@ def manufacturer_insert(conn, manufacturer_name, collaborator_name):
 
     return result_id
 
-def sneaker_remove(conn, sneaker_id, remove_type):
+def sneaker_remove(conn, sneaker_id, remove_type, event_time, sale_price=None):
     
-    remove_col_mappings = {'sell': "sold_at", 'trash': "trashed_at", 'give': "given_at"}
+    remove_col_mappings = {'sell': "sold_at", 
+                           'trash': "trashed_at", 
+                           'give': "given_at"}
     remove_col = remove_col_mappings[remove_type]
     
     if remove_col == "sold_at":
-        sql = "UPDATE sneakers SET sold_at = %s WHERE id = %s"
+        sql = "UPDATE sneakers SET sold_at = %s, sale_price = %s WHERE id = %s"
+
     elif remove_col == "trashed_at":
-        sql = "UPDATE sneakers SET trashed_at = %s WHERE id = %s"
+        sql = "UPDATE sneakers SET trashed_at = %s, sale_price = %s WHERE id = %s"
+
     else:
-        sql = "UPDATE sneakers SET given_at = %s WHERE id = %s"
-
-    params = (datetime.utcnow(), sneaker_id)
-
-    cur = conn.cursor()
+        sql = "UPDATE sneakers SET given_at = %s, sale_price = %s WHERE id = %s"
+     
+    cur = conn.cursor() 
+    params = (event_time, sale_price, sneaker_id) 
     cur.execute(sql, params)
+
     conn.commit()
 
     return "Executed " + sql 

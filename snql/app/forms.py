@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, SubmitField, SelectField
-from wtforms.validators import DataRequired
+from wtforms import StringField, IntegerField, FloatField, SubmitField, SelectField, DateField
+from wtforms.validators import DataRequired, Optional
 from app.data_scripts import data_hooks
 
 class SneakerEventForm(FlaskForm):
@@ -29,9 +29,20 @@ class ManufacturerAddForm(FlaskForm):
     collaborator_name = StringField(default=None)
     submit = SubmitField('Add Brand')
 
-class SneakerRemoveForm(FlaskForm):
-    removal_type = SelectField('Removal Type', validators=[DataRequired()], choices=[('sell', 'Sell'), ('trash', 'Trash'), ('give', 'Give')])
+class SneakerSaleForm(FlaskForm):
+    sneaker_to_sell = SelectField('Sneaker Name', coerce=int, validators=[DataRequired()]) 
+    sale_price = FloatField('Sale Price', validators=[DataRequired()]) 
+    sale_date = DateField('Sale Date (leave blank if today)', validators=[Optional()])
+    submit = SubmitField('Record Sale')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.sneaker_to_sell.choices = data_hooks.list_available_sneakers(data_hooks.db_connect())
+
+class SneakerTrashOrGiveForm(FlaskForm):
+    remove_type = SelectField('Removal Type', validators=[DataRequired()], choices=[('trash', 'Trash'), ('give', 'Give')])
     sneaker_to_remove = SelectField('Sneaker Name', coerce=int, validators=[DataRequired()]) 
+    remove_date = DateField('Removal Date (leave blank if today)', validators=[Optional()]) 
     submit = SubmitField('Remove Sneakers')
 
     def __init__(self, *args, **kwargs):
