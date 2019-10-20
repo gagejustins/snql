@@ -1,0 +1,12 @@
+[2019-10-20 13:15:39.733] [exthost] [info] extension host started
+[2019-10-20 13:15:40.082] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"extensionId":{"value":"vscode.debug-auto-launch","_lower":"vscode.debug-auto-launch"},"activationEvent":"*"}
+[2019-10-20 13:15:40.083] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/extensions/debug-auto-launch/dist/extension
+[2019-10-20 13:15:40.117] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"extensionId":{"value":"vscode.emmet","_lower":"vscode.emmet"},"activationEvent":"*"}
+[2019-10-20 13:15:40.118] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/extensions/emmet/dist/extension
+[2019-10-20 13:15:40.254] [exthost] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"extensionId":{"value":"vscode.git","_lower":"vscode.git"},"activationEvent":"*"}
+[2019-10-20 13:15:40.254] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/extensions/git/dist/main
+[2019-10-20 13:15:40.379] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"extensionId":{"value":"vscode.merge-conflict","_lower":"vscode.merge-conflict"},"activationEvent":"*"}
+[2019-10-20 13:15:40.379] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/extensions/merge-conflict/dist/extension
+[2019-10-20 13:15:40.392] [exthost] [info] eager extensions activated
+[2019-10-20 13:48:31.405] [exthost] [info] ExtensionService#_doActivateExtension vscode.python {"startup":false,"extensionId":{"value":"vscode.python","_lower":"vscode.python"},"activationEvent":"onLanguage:python"}
+[2019-10-20 13:48:31.405] [exthost] [info] ExtensionService#loadCommonJSModule file:///home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/extensions/python/dist/pythonMain

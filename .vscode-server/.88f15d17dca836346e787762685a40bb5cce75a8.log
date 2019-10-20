@@ -1,0 +1,37 @@
+
+
+*
+* Visual Studio Code Server
+*
+* Reminder: You may only use this software with Visual Studio family products,
+* as described in the license https://aka.ms/vscode-remote/license
+*
+
+
+IP Address: 159.203.109.126
+IP Address: 10.17.0.5
+Extension host agent listening on 33995
+
+
+[13:15:37] Extension host agent started.
+[13:15:37] [127.0.0.1][e3b70be4][ManagementConnection] New connection established.
+[13:15:37] [127.0.0.1][52686f94][ExtensionHostConnection] New connection established.
+bash: cannot set terminal process group (-1): Inappropriate ioctl for device
+bash: no job control in this shell
+[13:15:38] [127.0.0.1][52686f94][ExtensionHostConnection] <31611> Launched Extension Host Process.
+[13:46:34] [File Watcher (chokidar)] Inotify limit reached (ENOSPC)
+%c[IPC Library: File Watcher (chokidar)] %cUnhandled Promise Rejection:  color: blue color:  Canceled: Canceled
+    at Object.t.canceled (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/out/vs/platform/files/node/watcher/unix/watcherApp.js:10:952)
+    at u.cancel (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/out/vs/platform/files/node/watcher/unix/watcherApp.js:34:522)
+    at t.ThrottledDelayer.cancel (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/out/vs/platform/files/node/watcher/unix/watcherApp.js:34:916)
+    at Object.stop (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/out/vs/platform/files/node/watcher/unix/watcherApp.js:134:495)
+    at d.stop (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/out/vs/platform/files/node/watcher/unix/watcherApp.js:136:130)
+    at FSWatcher.y.on.e (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/out/vs/platform/files/node/watcher/unix/watcherApp.js:135:967)
+    at FSWatcher.emit (events.js:182:13)
+    at FSWatcher._handleError (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/index.js:596:10)
+    at NodeFsHandler._boundHandleError (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/lib/nodefs-handler.js:251:43)
+    at createFsWatchInstance (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/lib/nodefs-handler.js:66:5)
+    at setFsWatchListener (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/lib/nodefs-handler.js:113:15)
+    at NodeFsHandler._watchWithNodeFs (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/lib/nodefs-handler.js:279:14)
+    at NodeFsHandler._handleFile (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/lib/nodefs-handler.js:309:23)
+    at NodeFsHandler._addToNodeFs (/home/jgage/.vscode-server/bin/88f15d17dca836346e787762685a40bb5cce75a8/node_modules/chokidar/lib/nodefs-handler.js:557:21)
