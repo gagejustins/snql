@@ -89,7 +89,7 @@ def sms_reply():
         formatted_sneakers_list = '\n'.join(['%s - %s' % (key, value) for (key, value) in sorted(sneakers_dict.items())])
 
         if len(formatted_sneakers_list) > 0:
-            resp.message("Which pair exactly?\n {}".format(formatted_sneakers_list))
+            resp.message("Which pair exactly?\n\n {}\n\nEnter another search term to try again.".format(formatted_sneakers_list))
         else:
             resp.message("That search didn't return any results. Try again. Or don't, life is meaningless.")
 
