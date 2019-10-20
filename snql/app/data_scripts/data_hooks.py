@@ -40,11 +40,10 @@ def list_available_manufacturers(conn):
 
 def list_available_sneaker_ids(conn):
     """Returns in a list format"""
-    sql="select sneaker_id from dim_sneakers where is_owned = TRUE"
+    sql="select id from sneakers where coalesce(sold_at,trashed_at,given_at) is null"
     cur = conn.cursor()
     cur.execute(sql)
     results = cur.fetchall()
-    conn.close()
  
     sneaker_ids = [result for result in results]
     sneaker_ids_list = list(itertools.chain(*sneaker_ids))
@@ -52,7 +51,7 @@ def list_available_sneaker_ids(conn):
 
 def available_sneakers_search(conn, search_term):
     cur = conn.cursor()
-    cur.execute("""select s.id, concat_ws(' ',m.manufacturer_name, s.sneaker_name,s.color) from sneakers s join manufacturers m on s.manufacturer_id = m.id where lower(concat_ws(' ',m.manufacturer_name,s.sneaker_name,s.color)) like %s and coalesce(s.sold_at,s.given_at,s.trashed_at) is null;""", ("%"+search_term.lower().replace(" ", "")+"%",))
+    cur.execute("""select s.id, concat(m.manufacturer_name, ' ', s.sneaker_name, ' (', s.color, ')') from sneakers s join manufacturers m on s.manufacturer_id = m.id where lower(concat_ws(' ',m.manufacturer_name,s.sneaker_name,s.color)) like %s and coalesce(s.sold_at,s.given_at,s.trashed_at) is null;""", ("%"+search_term.lower().replace(" ", "")+"%",))
     results = cur.fetchall()
 
     sneakers = [result for result in results]

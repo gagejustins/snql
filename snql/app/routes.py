@@ -129,8 +129,9 @@ def sms_reply():
             data_hooks.sneaker_event_insert(conn=conn, 
                                             sneaker_id=user_term, 
                                             event_type='wear', 
+                                            event_time=datetime.utcnow(),
                                             config=None)
-            resp.message("Wear recorded for sneaker_id {}".format(user_term))
+            resp.message("Wear recorded for sneaker_id {}. Wear them while you still can.".format(user_term))
         else:
             resp.message("That sneaker_id doesn't exist in the SNQL database or isn't owned (yet). Try searching again or entering a sneaker_id directly. Or don't, life is meaningless.")
 
