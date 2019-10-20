@@ -1,4 +1,4 @@
-*.ssh*
+*/.ssh*
 .profile
 .python_history
 .viminfo
@@ -15,5 +15,5 @@ venv/
 .bashrc
 .cloud-locale-test.skip
 .cache
-.vscode-server
+.vscode-server/
 nohup.out
