@@ -1,2 +1,5 @@
+[user]
+	email = gagejustins@gmail.com
+	name = gagejustins
 [push]
-	default = matching
+	default = simple
