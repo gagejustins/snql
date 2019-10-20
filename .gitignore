@@ -17,3 +17,5 @@ venv/
 .cache
 .vscode-server/
 nohup.out
+send_sms.py
+.selected_editor
